@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: uptime-kuma
   namespace: monitoring
+  labels:
+    managed-by: argocd
 spec:
   replicas: 1
   selector:
