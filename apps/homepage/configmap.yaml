@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  namespace: dashboard
+data:
+  settings.yaml: |
+    title: Homelab
+    theme: dark
+    color: slate
+    layout:
+      Kubernetes:
+        style: row
+        columns: 3
+      Monitoring:
+        style: row
+        columns: 3
+      Links:
+        style: row
+        columns: 3
+
+  services.yaml: |
+    - Kubernetes:
+        - Argo CD:
+            href: http://argocd.homelab.local
+            description: GitOps Deployment
+            icon: argocd.png
+        - Kubernetes API:
+            href: https://192.168.93.12:6443
+            description: k3s API Server
+            icon: kubernetes.png
+        - GitHub Repo:
+            href: https://github.com/Fredi3912/homelab-k3s
+            description: Homelab GitOps Repository
+            icon: github.png
+
+    - Monitoring:
+        - Uptime Kuma:
+            href: http://uptime.homelab.local
+            description: Service Monitoring
+            icon: uptime-kuma.png
+
+    - Links:
+        - Master:
+            href: http://192.168.93.12
+            description: k3s-master01
+            icon: linux.png
+        - Worker01:
+            href: http://192.168.93.24
+            description: k3s-worker01
+            icon: linux.png
+        - Worker02:
+            href: http://192.168.93.92
+            description: k3s-worker02
+            icon: linux.png
+
+  bookmarks.yaml: |
+    - Homelab:
+        - GitHub:
+            - abbr: GH
+              href: https://github.com/Fredi3912/homelab-k3s
+        - Argo CD:
+            - abbr: AR
+              href: http://argocd.homelab.local
+        - Uptime Kuma:
+            - abbr: UK
+              href: http://uptime.homelab.local
+
+  widgets.yaml: |
+    - resources:
+        backend: resources
+        expanded: true
+        cpu: true
+        memory: true
+    - search:
+        provider: google
+        target: _blank
+
+  docker.yaml: |
+    {}
+
+  kubernetes.yaml: |
+    mode: disabled
